@@ -1,0 +1,890 @@
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+/* @import url('https://unpkg.com/css.gg@2.0.0/icons/css/add-r.css'); */
+
+*{
+	margin: 0;
+	padding: 0;
+	
+	font-family: 'Oxygen', sans-serif;
+	font-family: 'Poppins', sans-serif;
+	
+	/* background: rgb(255, 184, 240); */
+	
+	/* background-image: url(IMG_2068.jpg); */
+	
+	box-sizing: border-box;
+	
+}
+
+/* .bg-image{
+	background-repeat: no repeat;
+	height: 100px;
+} */
+
+
+/*.header {
+	min-height: 100vh;  view port height is 100% 
+	width: 100%;
+	background-color: red;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+}
+*/
+
+/*
+.body {
+	background: linear-gradient(135deg, #153667, #4e085f);
+} */
+
+ul.nav {
+	display: flex;
+	padding: 2% 3%;
+	/* justify-content: space-between;
+	align-items: center; */
+	font-size: 20px;
+	
+}
+
+a.nav-link {
+	color:rgb(115, 100, 255);
+	font-weight: normal;
+	
+}
+
+ul.nav a:hover {
+	cursor: pointer;
+	text-decoration: underline;
+	text-decoration-color: #4040FF;
+	color: #4040FF !important;
+	/*-webkit-text-fill-color: rgb(154, 124, 245); */
+	text-underline-offset: 50%;
+	text-decoration-thickness: 20%;
+}
+ul.nav a:visited {
+	color: rgb(115, 100, 255);
+}
+
+/*
+#homeImage {
+	width: 50px;
+	float: left;
+}
+
+.nav-menu {
+	flex: 1;
+	text-align: right;
+}
+
+.nav-menu ul li{
+	list-style: none;
+	display: inline-block;
+	padding: 8px 12px;
+	position: relative;
+}
+
+.nav-menu ul li a{
+	color: black;
+	text-decoration: none;
+	font-size: 13px;
+}
+
+.nav-menu ul li::after{
+	content: '';
+	width: 0%;
+	height: 2px;
+	background: green;
+	display: block;
+	margin: auto;
+}*/
+
+#accountIcon{
+	color: rgb(115, 100, 255);
+	width: 40px;
+	height: 40px;
+	fill: currentColor;
+	margin-left: 10px;
+}
+
+#accountIcon a:hover{
+	cursor: pointer;
+}
+
+/* 
+#middle {
+	background-image:url(IMG_2608.jpg);
+} */
+
+
+#purpleBlob {
+	width: 47%;
+}
+
+/* ------- To Do List Page -------- */
+
+
+/* div.cont {
+	width: 100%;
+	min-height: 100vh;
+	background-color: #cfc9ff;;
+} */
+
+/*
+div.todo-app
+{
+	width: 100%;
+	max-width: 540px;
+	background: #fff;
+	margin: 100px auto 20px;
+	padding: 40px 30px 70px;
+	border-radius: 10px;
+}
+
+div.todo-app h2 {
+	color: #002765;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+} */
+
+
+
+.flex-c-row {
+	display:flex;
+  	/* align-items:center; */
+  	margin:25px;
+ 
+  	 /* to-do app */ 
+	margin: 10px auto 20px; 
+	
+} /* setting the display to flex, which is by default 'row' with items side-by-side; give it align-items:center to align items vertically in the available space */
+
+/*
+.flex-c-row#flex-c-rowForToDoList {
+	
+  	justify-content: center; any element within this class will be within the center of the screen
+	
+}  setting the display to flex, which is by default 'row' with items side-by-side; give it align-items:center to align items vertically in the available space
+*/
+
+div.todo-app {
+	width: 540px;
+	background: #fff;
+	padding: 40px 30px 70px;
+	border-radius: 10px;
+}
+
+div.todo-app h2 {
+	color: rgb(115, 100, 255);
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+} 
+
+/* source for .flex-c-row & .flex-c-col : https://stackoverflow.com/questions/64341618/how-do-i-add-elements-below-my-navbar-using-bootstrap */
+
+.flex-c-row.for-todo-list > * {
+  margin:50px;  /* space all direct child elements of the outer container by 50px on all sides top bottom right left */
+}
+
+
+
+
+
+.flex-c-col {
+  display:flex;
+  flex-direction:column; /* same as above but set the flexbox direction of elements as a COLUMN so vertical */
+} 
+
+
+
+.row-of-todo-list {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 30px;
+	background: #edeef0;
+	padding-left: 10px;
+	margin-bottom: 25px;
+	
+}
+
+
+input#input-box{
+	flex: 1;
+	border: none;
+	outline: none;
+	background: transparent;
+	padding: 10px;
+	font-weight: 14px;
+	
+}
+
+button#toDoListAddButton{
+	border: none;
+	outline: none;
+	padding: 16px 50px;
+	background: pink;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+	ul.form-check li{
+	list-style: none;
+	font-size: 17px;
+	padding: 12px 8px 12px 0px;
+	user-select: none;
+	/* cursor: pointer; */
+	position: relative;
+	
+}
+
+ul.form-check li label {
+	cursor: pointer;
+}
+
+ul.form-check ::before{
+	content: '';
+	position: absolute;
+	height: 28px;
+	width: 28px;
+	border-radius: 50%;
+	/* background-image: url(unchecked.png);
+	
+	background-size: cover;
+	background-position: center; */
+	top: 12px;
+	left: 8px;
+	
+	/* position: absolute;
+  	 top: 0;
+  	left: 0;
+  	height: 25px;
+  	width: 25px;
+  	background-color: #eee; */
+	
+}
+
+/* ul.list-group li :not(span){
+	
+	 
+	top: 12px;
+	left: 8px; 
+	
+	position: absolute; */
+  	/* top: 0;
+  	left: 0; */
+  /*	height: 25px;
+  	width: 25px;
+  	background-color: #eee; 
+	
+	
+} */
+
+ul li input[type=checkbox]:checked + label{
+	color: #555;
+	text-decoration: line-through;
+}
+
+/* 
+ul li.checked::before{
+	 background-image: url(checked.png);
+} */
+
+
+ul.form-check li span {
+	position: absolute;
+	right: 0;
+	top: 5px;
+	width: 40px;
+	height: 40px;
+	font-size: 22px;
+	color: #555;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+}
+
+
+ul.form-check li span:hover {
+	background: #edeef0;
+} 
+
+
+
+
+/*
+.theContainer {
+	width: 400px;
+	  height: 400px; - comment
+	height: auto;
+	min-height: 400px;
+	padding: 30px;
+	background: white; comment: transparent 
+	border: 2px solid #e6b7eca1;
+	border-radius: 10px;
+	backdrop-filter: blur(15px);
+}
+
+h1.todoList-title {
+	color: rgb(115, 100, 255);
+	text-align: center;
+	margin-bottom: 36px;
+	
+}
+
+.input-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 25px;
+}
+
+.todo-input {
+	flex: 1;
+	outline: none;
+	padding: 10px 10px 10px 20px;
+	background-color: transparent;
+	border: 2px solid #e6b7eca1;
+	border-radius: 30px;
+	color: black;
+	font-size: 16px;
+	margin-right: 10px;
+}
+
+.todo-input::placeholder {
+	color: black;
+}
+
+.add-button {
+	border: none;
+	outline: none;
+	background: white;
+	color: black;
+	font-size: 35px;
+	cursor: pointer;
+	border-radius: 40px;
+	width: 40px;
+	height: 40px;
+}
+
+.todo {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #463c7b;
+	border-radius: 5px;
+	margin: 10px 0;
+	padding: 10px 12px;
+	border: 2px solid #e6b7eca1;
+	transition: all 0.2 ease;
+}
+
+.todo:first-child{
+	margin-top: 0;
+}
+
+.todo:last-child{
+	margin-bottom: 0;
+}
+
+.todo:hover {
+	background-color: #e6b7eca1;
+}
+
+.todo label {
+	cursor: pointer;
+	width: fit-content;
+	display: flex;
+	align-items: center;
+	color: black;
+}
+
+.todo span {
+  padding-left: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type='checkbox'] {
+  visibility: hidden;
+}
+
+input:checked + span {
+  text-decoration: line-through;
+}
+
+.todo:hover input:checked + span::before, input:checked + span::before {
+  background: url(./check.svg) 50% 50% no-repeat #09bb21;
+  border-color: #09bb21;
+}
+
+.todo:hover span::before {
+  border-color: black;
+}
+
+.todo .delete-btn  {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+}
+
+ fixing Todo List overflow 
+.todos-container  {
+  height: 300px;
+  overflow: overlay;
+}
+
+.todos-container::-webkit-scrollbar-track  {
+  background: rgb(89, 247, 246);
+  border-radius: 20px;
+}
+
+.todos-container::-webkit-scrollbar  {
+  width: 0;
+}
+
+.todos-container:hover::-webkit-scrollbar  {
+  width: 7px;
+}
+
+.todos-container::-webkit-scrollbar-thumb  {
+  background: rgb(50, 213, 204);
+  border-radius: 20px;
+ }
+ 
+ .filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.filter {
+  color: #eee;
+  padding: 5px 15px;
+  border-radius: 100px;
+  border: 2px solid #e6b7eca1;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.filter.active, .filter:hover {
+  background-color: #e6b7eca1;
+}
+
+.delete-all {
+  display: flex;
+  color: #eee;
+  padding: 7px 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-all:hover {
+  border-radius: 5px;
+  background-color: #e6b7eca1;
+}
+*/
+
+
+
+/* ------- Notes Page -------- */
+
+.notes {
+    display: flex;
+    height: 100%;
+}
+
+.notes__sidebar {
+    border-right: 2px solid black;  /* #dddddd */
+   flex-shrink: 0; /* flex shrink: determines how much the flex item will shrink relative to the rest of the flex items in the flex container when there isn't enough space on the row */
+    overflow-y: auto; /* overflow-y: Specifies the handling of overflow in the vertical direction. */
+    padding: 1em;
+    width: 300px;
+}
+
+
+.notes__add.btn-primary.rounded-3 {
+    background-color:rgb(115, 100, 255);
+    border: none;
+   /* border-radius: 5%; */
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    padding: 0.75em 0;
+    width: 100%;
+}
+
+.notes__add.btn-primary.rounded-3:hover{
+    background-color:  #4040FF;
+   
+}
+
+.notes__list-item {
+    cursor: pointer;
+}
+
+.notes__list-item--selected {
+    background: #eeeeee;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+/*
+.notes__list {
+	background: #eeeeee;
+	height: 500px;
+	
+} */
+
+
+.notes__small-title, .notes__small-updated {
+    padding: 10px;
+}
+
+.notes__small-title {
+    font-size: 1.2em;
+}
+
+.notes__small-body {
+    padding: 0 10px; /* no padding on the left */
+}
+
+.notes__small-updated {
+    color: black; /* #aaaaaa */
+    font-weight: 100;
+    font-style: italic;
+    text-align: right;
+}
+
+
+.notes__preview {
+    display: flex; /* sets the flexible length on flexible items */
+    flex-direction: column;
+    padding: 2em 3em;
+    flex-grow: 1; /* flex-grow: specifies how much the item will grow relative to the rest of the flexible items inside the same container */
+}
+
+.notes__title.form-control, .notes__body.form-control {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.notes__title.form-control {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.notes__body.form-control {
+    flex-grow: 1;
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-top: 1em; /* 3em */
+    resize: none;
+    height: 500px;
+}
+
+.saveNoteTitle.btn-primary.rounded-3, .saveNote.btn-primary.rounded-3{
+	background-color:rgb(115, 100, 255);
+    border: none;
+   /* border-radius: 5%; */
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.25em;
+    font-weight: 600;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-right: 1em;
+    padding: 0.75em 0;
+    width: 25%;
+}
+
+.saveNoteTitle.btn-primary.rounded-3:hover, .saveNote.btn-primary.rounded-3:hover{
+    background-color:  #4040FF;
+   
+}
+
+/*
+.notes__list :hover{
+	background-color: gray;
+} */
+
+
+/* -------- Calendar Page --------- */
+:root {
+	--primary-clr: #b38add;
+}
+
+/*
+i.bi.bi-caret-left-square:hover{
+	color: blue;
+} */
+
+
+.flex-c-row.for-calendar.justify-content-center {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #e2e1dc;
+}
+
+.theContainer{
+	position: relative;
+	width: 1200px;
+	min-height: 850px;
+	margin: 0 auto;
+	padding: 5px;
+	color: #fff;
+	display: flex;
+	border-radius: 10px;
+	background-color: #373c4f;
+}
+
+.left {
+	width: 90%;
+	padding: 20px;
+}
+
+.calendar{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	color: #878895;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+
+/*
+.calendar::before,
+.calendar::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	width: 12px;
+	height: 97%;
+	border-radius: 0 5px 5px 0;
+	background-color: #d3d5d6d7;
+	transform: translateY(-50%);
+} */
+
+.calendar::before {
+	height: 94%;
+	left: calc(100% + 12px);
+	background-color: rgb(153, 153, 153);
+	
+}
+.calendar .month {
+	width: 100%;
+	height: 150px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 50px;
+	font-size: 1.2rem;
+	font-weight: 500;
+	text-transform: capitalize;
+}
+
+.calendar .month .prev, .calendar .month .next {
+	cursor: pointer;
+}
+
+.calendar .month .prev:hover, .calendar .month .next:hover {
+	color: var(--primary-clr);
+}
+
+.calendar .weekdays {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	font-size: 1rem;
+	font-weight: 500;
+	text-transform: capitalize;
+	
+}
+
+.calendar .weekdays div{
+	width: 14.28%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+tr.calendarPageDates{
+	height: 85px;
+	width: 75px;
+	
+}
+
+div.table-responsive{
+	margin: 50px;
+}
+
+tr.calendarPageDates td{
+	color: #878895;
+}
+
+.calendar .day:not(.prev-date , .next-date):hover{
+	color: #fff;
+	background-color: var(--primary-clr);
+}
+
+.calendar .calendarPageDates .prev-date, .calendar .calendarPageDates .next-date {
+	color: #b3b3b3;
+	
+}
+
+.calendar .calendarPageDates .active {
+	position: relative;
+	/*font-size: 2rem;*/
+	/* increasing font size makes the box in that column bigger */
+	color: #fff;
+	background-color: var(--primary-clr);
+}
+
+.calendar .calendarPageDates .active::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 0 10px 2px var(--primary-clr);
+}
+
+.calendar .calendarPageDates .today {
+	/* font-size: 2rem; */
+	/* increasing font size makes the box in that column bigger */
+} 
+
+.calendar .calendarPageDates .event {
+	position: relative;
+}
+
+.calendar .calendarPageDates .event::after {
+	content: '';
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	width: 75%;
+	height: 6px;
+	border-radius: 30px;
+	transform: translateX(-50%);
+	background-color: var(--primary-clr);
+} 
+
+.calendar .event:hover::after {
+	background-color: #fff;
+}
+
+.calendar .active.event::after {
+	background-color: #fff;
+	bottom: 20%;
+	
+}
+
+.calendar .active.event {
+	padding-botom: 10px;
+}
+
+.calendar .goto-today {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	gap: 5px;
+	padding: 0 20px;
+	margin-bottom: 20px;
+	color: var(--primary-clr);
+}
+
+.calendar .goto-today .goto{
+	display: flex;
+	align-items: center;
+	border-radius: 5px;
+	overflow: hidden;
+	border: 1px solid var(--primary-clr);
+}
+
+.calendar .goto-today .goto input{
+	width: 100%;
+	height: 30px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	padding: 0 20px;
+	color: var(--primary-clr);
+	border-radius: 5px;
+}
+
+.calendar .goto-today button {
+	padding: 5px 10px;
+	border: 1px solid var(--primary-clr);
+	border-radius: 5px;
+	background-color: transparent;
+	cursor: pointer;
+	color: var(--primary-clr);
+}
+
+.calendar .goto-today button:hover {
+	color: #fff;
+	background-color: var(--primary-clr);
+}
+
+.calendar .goto-today .goto button {
+	border: none;
+	border-left: 1px solid var(--primary-clr);
+	border-radius: 0;
+}
+
+/* new code */
+.app {
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: rgb(115, 100, 255);;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+.navbar-links a {
+  color: #fff;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.content {
+  margin-top: 80px; /* Adjust margin based on your navbar height */
+}
+
+/* Style changes when scrolling */
+.scrolling .navbar {
+  background-color: rgb(115, 100, 255);;
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width", initial-scale="1.0">
+		<title> Notes </title>
+		<link rel="stylesheet" href="style.css">
+		
+		<!-- Twitter Boostrap -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	
+		<!-- Google Font: Nunito -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+		
+		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+		
+		<style type="text/css">
+   			body 
+   			{ 
+				  /* background: linear-gradient(white, #cfc9ff,  rgb(115, 100, 255), #4040FF) !important; */
+				   /* background:url("IMG_2072.jpg") !important;
+				  background-repeat: no-repeat !important; */
+				   background: white !important;
+				  
+			} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+		</style>
+		
+	</head>
+	
+	<body>
+
+		<section class="header">
+			
+			<!-- <nav class="homeNav">
+				
+				<a href="index.html"><img id="homeImage" src="homeImage.png"></a>
+				 ****TO BE DONE****: 
+						- figure out how to make homeImage work in a different folder
+						- change homeImage name to homeImageIcon (something like that)
+						- figure out how to make image dynamic/responsive to screen size
+				
+				 Image does not load when in a different folder 
+				 background of image is transparent - works with any background color
+				
+				
+				<div class="nav-menu">
+					<ul>
+						<li><a href="">Home</a></li>
+						<li><a href="">About</a></li>
+						<li><a href="">To Do List</a></li>
+						<li><a href="">Notes</a></li>
+					</ul>
+				</div>
+				
+			</nav> -->
+			
+			
+			<!-- navigation bar using elements from Twitter Boostrap: https://getbootstrap.com/docs/5.3/components/navs-tabs/ -->
+				 <ul class="nav justify-content-end" class="homePageNav">
+				  	
+				  	<li class="nav-item">
+				    	<!-- <a class="nav-link active" aria-current="page" href="#">Active</a> -->
+				  		<a class="nav-link" href="index.html">Home</a>
+				  	</li>
+				  	
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="#">About</a>
+				  	</li>
+				  	
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="ToDoListPage.html">To Do List</a>
+				  	</li>
+				  	
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="#">Notes</a>
+				  	</li>
+				  	
+				  	<li class="nav-item">
+				    	<a class="nav-link" href="CalendarPage.html">Calendar</a>
+				  	</li>
+				  	
+				  	<li class="nav-item">
+				    	<a href="#">
+				    		<svg id ="accountIcon" xmlns="http://www.w3.org/2000/svg" class="bi bi-person-circle" viewBox="0 0 16 16">
+  								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  								<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+							</svg>
+						</a>
+				  	</li>
+				  	
+				</ul>
+  			
+			
+		</section>
+		
+		<!--
+		<div class="flex-c-row">
+ 			<div class="flex-c-col">
+				<div class="cont">
+					<div class"todo-app">
+						<h2>To-Do List</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		-->
+		
+		
+		<div class="row">
+			<div class="col">
+				<div class ="notes" id="app">
+					<div class="notes__sidebar">
+						<button class="notes__add btn-primary rounded-3" onclick="addButton()" id="addNotesButton">Add Note</button>
+						<div class="notes__list" id="theNotes_list">
+							<!-- <div class="notes__list-item">
+								<div class ="notes__small-title">Lecture Notes</div>
+								<div class ="notes__small-body">I learned nothing today.</div>
+								<div class="notes__small-updated">Monday 10:02am</div>
+							</div> -->
+						</div>
+					</div>
+						
+					<div class="notes__preview">
+						<input class="notes__title form-control" id="Notes_title" type="text" placeholder="Enter a title...">
+						<span>
+							<button class="saveNoteTitle btn-primary rounded-3" id="saveTitleButton" onclick="addNote()">Save Title</button>
+							<button class="saveNote btn-primary rounded-3">Save Note</button>
+						</span>
+						
+						
+						<textarea class="notes__body form-control" id="Notes_content" placeholder="I am the notes body..."></textarea> 
+					</div>
+				</div>
+					
+				
+			</div>
+			
+		</div> 
+			
+		
+		<script 
+			src="theNotes.js">
+			
+
+		</script>
+		<!-- <script src="main.js"></script> -->
+		<!-- module type: can make use of native javascript import export syntax -->
+	</body>
+</html>
