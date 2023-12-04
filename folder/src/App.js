@@ -1,24 +1,23 @@
 import React from 'react'
-import Navigation from './navigation.js'
 import NotesScreen from './notes.js'
 import ToDoListScreen from './todolist.js'
+import Login from './login.js'
+import Signup from './signup.js'
+import Home from './home.js'
+import Welcome from './welcome.js'
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 
 function App(){
   return(
-    
     <Router>
-      <div>
-        <Navigation />
-        <Routes>
-          {/* Define the route for the NotesScreen component */}
-          <Route path="/notes" element={<NotesScreen />} />
-
-          {/* Define the route for the NotesScreen component */}
-          <Route path="/todolist" element={<ToDoListScreen />} />
-
-        </Routes>
-      </div>
+    <Routes>
+      <Route path='/' element={<Welcome />}></Route>
+      <Route path='/login' element={<Login />}></Route>
+      <Route path='/signup' element={<Signup />}></Route>
+      <Route path="/home" element={<Home />}></Route>
+      <Route path="/notes" element={<NotesScreen />}></Route>
+      <Route path="/todolist" element={<ToDoListScreen />}></Route>
+    </Routes>
     </Router>
   );
   /*
@@ -51,3 +50,19 @@ function App(){
 }
 
 export default App
+
+/*
+<Router>
+        <div>
+          <Navigation />
+          <Routes>
+            {/* Define the route for the NotesScreen component */
+            /*<Route path="/notes" element={<NotesScreen />} />
+              
+
+            {/* Define the route for the NotesScreen component */
+            /*<Route path="/todolist" element={<ToDoListScreen />} />
+
+          </Routes>
+        </div>
+      </Router>*/

@@ -49,6 +49,70 @@ app.get('/', (req, res) => {
 //console.log(result)
 */
 
+app.get("/users", (req, res) => {
+  const sql = "SELECT * FROM users";
+  db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.post("/users", (req, res) => {
+  const sql =
+    "INSERT INTO users (`name`, `email`, `password`) VALUES (?)";
+
+  const values = [
+    req.body.name,
+    req.body.email,
+    req.body.password,
+  ];
+
+  db.query(sql, [values], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error inserting user into database");
+    } else {
+      console.log("user added to database:", result);
+      res.status(200).send("user added to database");
+    }
+  });
+});
+
+app.post("/login", (req, res) => {
+  const sql =
+    'SELECT * FROM users WHERE `email` = ? AND `password` = ?';
+
+  const values = [
+    req.body.email,
+    req.body.password,
+  ];
+
+  db.query(sql, [req.body.email, req.body.password,], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("No such user in database");
+      //return res.json("Failed");
+    } else {
+      //console.log("User is in database:", result);
+      //res.status(200).send("User is in database");
+      //return res.json("Success");
+      if (result.length > 0) {
+        console.log("User is in the database:", result);
+        return res.json("Success");
+      } else {
+        //console.log("No user in the database");
+        //res.status(404).json({ status: "Failed" });
+        return res.json("Failure");
+      }
+    }/*
+    if(result.length > 0){
+      return res.json("Success");
+    } else {
+      return res.json("Failed");
+    }*/
+  });
+});
+
 app.get("/notes", async (req, res) => {
   const sql = "SELECT * FROM notes";
   db.query(sql, (err, results) => {

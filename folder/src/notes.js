@@ -2,6 +2,7 @@ import React from 'react';
 //import { Button } from 'bootstrap'; // Import Bootstrap Button component
 //import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import axios from 'axios';
+import Navigation from './navigation.js'
 
 
 export default function NoteScreen() {
@@ -25,6 +26,7 @@ export default function NoteScreen() {
 
     return (
       <div>
+        <Navigation />
         <h1>Notes Screen</h1>
         {/* Add your note content here */}
         
