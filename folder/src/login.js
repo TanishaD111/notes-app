@@ -10,6 +10,9 @@ export default function Login() {
     })
 
     const navigate = useNavigate();
+
+    axios.defaults.withCredentials = true;
+
     const [errors, setErrors] = useState({})
 
     const handleInput = (e) => {

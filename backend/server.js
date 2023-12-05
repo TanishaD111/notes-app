@@ -3,7 +3,11 @@ import dotenv from 'dotenv'
 import mysql from 'mysql2'
 const app = express();
 import cors from 'cors'
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  methods: ["POST", "GET"],
+  credentials: true
+}));
 app.use(express.json());
 import path from 'path'
 import jwt from 'jsonwebtoken'
@@ -62,6 +66,22 @@ app.get("/users", (req, res) => {
   });
 });
 
+const verifyUser = (req, res, next) => {
+  const token = req.cookies.token;
+  if(!token){
+    return res.json({Error: "You are not authenticated"});
+  } else{
+    jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+      if(err) {
+        return res.json({Error: "Token is not correct"});
+      } else {
+        req.name = decoded.name;
+        next();
+      }
+    })
+  }
+}
+
 app.post("/users", (req, res) => {
   const sql =
     "INSERT INTO users (`name`, `email`, `password`) VALUES (?)";
@@ -113,6 +133,10 @@ app.post("/login", (req, res) => {
         bcrypt.compare(req.body.password.toString(), result[0].password, (err, response) => {
           if(err) return res.json({Error: "Password compare error"});
           if(response) {
+            //generate a token bc login was successful
+            const name = result[0].name;
+            const token = jwt.sign({name}, "jwt-secret-key", {expiresIn: '1d'});
+            res.cookie('token', token)
             return res.json({Status: "Success"})
           } else {
             console.error("Error!!");
@@ -133,6 +157,17 @@ app.post("/login", (req, res) => {
     }*/
   });
 });
+
+
+
+app.get('/home', verifyUser, (req, res) => {
+  return res.json({Status: "Success", name: req.name});
+})
+
+app.get('/logout', (req, res) => {
+  res.clearCookie('token')
+  return res.json({Status: "Success"});
+})
 
 app.get("/notes", async (req, res) => {
   const sql = "SELECT * FROM notes";
