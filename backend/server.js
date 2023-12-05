@@ -6,6 +6,11 @@ import cors from 'cors'
 app.use(cors());
 app.use(express.json());
 import path from 'path'
+import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
+import cookieParser from 'cookie-parser'
+app.use(cookieParser());
+const salt = 10;
 
 // Create MySQL Connection
 dotenv.config();
@@ -61,48 +66,64 @@ app.post("/users", (req, res) => {
   const sql =
     "INSERT INTO users (`name`, `email`, `password`) VALUES (?)";
 
+  bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
+    if(err) return res.json({Error: "Error for hashing password"});
+    const values = [
+      req.body.name,
+      req.body.email,
+      hash,
+    ];
+
+    db.query(sql, [values], (err, result) => {
+      if (err) {
+        console.error(err);
+        //res.status(500).send("Error inserting user into database");
+        return res.json({Error: "Inserting data error in server"})
+        
+      } else {
+        console.log("user added to database:", result);
+        //res.status(200).send("user added to database");
+        return res.json({Status: "Success"})
+      }
+    });
+  })
+});
+
+app.post("/login", (req, res) => {
+  const sql =
+    'SELECT * FROM users WHERE `email` = ?';
+
   const values = [
-    req.body.name,
     req.body.email,
-    req.body.password,
   ];
 
   db.query(sql, [values], (err, result) => {
     if (err) {
       console.error(err);
-      res.status(500).send("Error inserting user into database");
-    } else {
-      console.log("user added to database:", result);
-      res.status(200).send("user added to database");
-    }
-  });
-});
-
-app.post("/login", (req, res) => {
-  const sql =
-    'SELECT * FROM users WHERE `email` = ? AND `password` = ?';
-
-  const values = [
-    req.body.email,
-    req.body.password,
-  ];
-
-  db.query(sql, [req.body.email, req.body.password,], (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("No such user in database");
+      //res.status(500).send("No such user in database");
       //return res.json("Failed");
+      res.json({Error: "Login error in server"})
     } else {
       //console.log("User is in database:", result);
       //res.status(200).send("User is in database");
       //return res.json("Success");
       if (result.length > 0) {
-        console.log("User is in the database:", result);
-        return res.json("Success");
+        //console.log("User is in the database:", result);
+        //return res.json("Success");
+        bcrypt.compare(req.body.password.toString(), result[0].password, (err, response) => {
+          if(err) return res.json({Error: "Password compare error"});
+          if(response) {
+            return res.json({Status: "Success"})
+          } else {
+            console.error("Error!!");
+            return res.json({Error: "Password doesn't match"})
+          }
+        })
       } else {
         //console.log("No user in the database");
         //res.status(404).json({ status: "Failed" });
-        return res.json("Failure");
+        //return res.json("Failure");
+        res.json({Error: "No email exists"})
       }
     }/*
     if(result.length > 0){
@@ -123,11 +144,11 @@ app.get("/notes", async (req, res) => {
 
 app.post("/notes", (req, res) => {
   const sql =
-    "INSERT INTO notes (`title`, `content`) VALUES (?)";
+    "INSERT INTO notes (`content`, `user_id`) VALUES (?)";
 
   const values = [
-    req.body.title,
     req.body.content,
+    req.body.user_id,
   ];
 
   db.query(sql, [values], (err, result) => {
@@ -165,6 +186,25 @@ app.post("/todolist", (req, res) => {
     } else {
       console.log("list item added to database:", result);
       res.status(200).send("list item added to database");
+    }
+  });
+});
+
+app.post("/todolist/remove", (req, res) => {
+  const sql =
+    "DELETE FROM todolist WHERE description = ?";
+
+  const values = [
+    req.body.description,
+  ];
+
+  db.query(sql, [values], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error deleting list item from database");
+    } else {
+      console.log("list item deleted from database:", result);
+      res.status(200).send("list item deleted from database");
     }
   });
 });

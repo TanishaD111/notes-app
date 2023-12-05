@@ -1,21 +1,28 @@
 import React from 'react'
 import './App.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Navigation extends React.Component {
     render() {
     
         return (
-          <nav className={`navbar`}>
-            <div className="navbar-brand">App Name!!</div>
-            <div className="navbar-links">
-              <a href="home">Home</a>
-              <a href="about">About</a>
-              <a href="notes">Notes</a>
-              <a href="todolist">To Do List</a>
-              <a href="calender">Calender</a>
-            </div>
-          </nav>
+          <ul className="header nav justify-content-end homePageNav">
+            <li className="nav-item">
+              <a className="nav-link" href="home">Home</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="notes">Notes</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="todolist">To Do List</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="calender">Calender</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="profile">Profile</a>
+            </li>
+          </ul>
         );
       }
     

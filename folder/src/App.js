@@ -5,6 +5,8 @@ import Login from './login.js'
 import Signup from './signup.js'
 import Home from './home.js'
 import Welcome from './welcome.js'
+import Profile from './profile.js'
+import Calender from './calender.js'
 import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
 
 function App(){
@@ -17,6 +19,8 @@ function App(){
       <Route path="/home" element={<Home />}></Route>
       <Route path="/notes" element={<NotesScreen />}></Route>
       <Route path="/todolist" element={<ToDoListScreen />}></Route>
+      <Route path="/profile" element={<Profile />}></Route>
+      <Route path="/calender" element={<Calender />}></Route>
     </Routes>
     </Router>
   );

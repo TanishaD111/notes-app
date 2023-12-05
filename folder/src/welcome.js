@@ -11,8 +11,8 @@ export default function Welcome() {
 			<h1>Welcome to *insert app name*!</h1>
 			<h2>Please choose one option.</h2>
 			<span>
-                <Link to="/signup" className='btn btn-default border w-50 bg-light rounded-0 text-decoration-none'>Create Account</Link>
-                <Link to="/login" className='btn btn-default border w-50 bg-light rounded-0 text-decoration-none'>Log in</Link>
+                <Link to="/signup" className='btn w-100 btn-lg login-button'>Sign Up</Link>
+                <Link to="/login" className='btn w-100 btn-lg sign-up-button'>Log in</Link>
 			</span>
 			
 		</div>
