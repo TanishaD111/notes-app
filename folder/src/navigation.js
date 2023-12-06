@@ -7,9 +7,7 @@ class Navigation extends React.Component {
     
         return (
           <ul className="header nav justify-content-end homePageNav">
-            <li className="nav-item">
-              <a className="nav-link" href="home">Home</a>
-            </li>
+            
             <li className="nav-item">
               <a className="nav-link" href="notes">Notes</a>
             </li>

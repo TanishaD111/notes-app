@@ -11,6 +11,7 @@ export default function NoteScreen() {
   const [auth,setAuth] = useState(false);
   const [message, setMessage] = useState('')
   const [name, setName] = useState('')
+  //const [content, setContent] = useState('')
   //const [userId, setUserId] = useState('')
   axios.defaults.withCredentials = true;
   useEffect(() => {
@@ -23,28 +24,42 @@ export default function NoteScreen() {
             setAuth(false)
             setMessage(res.data.Error)
         }
-    })
-    .then(err => console.log(err));
-}, [])
+      })
+      .then(err => console.log(err));
+  }, [])
+
+  const [data, setData] = useState([])
+  useEffect(() => {
+    axios.get(`http://localhost:8080/notes?name=${name}`)
+    .then(res => setData(res.data))
+    .catch(err => console.log(err));
+  }, [name])
 
 
     async function addNote() {
       //const title = document.getElementById("Notes_title").value;
-      const content = document.getElementById("userInput").value;
-
+      const content2 = document.getElementById("userInput").value;
+      //setContent(content2)
       const newNote = {
-        content: content,
+        content: content2,
         name: name,
       };
 
       try {
         await axios.post("http://localhost:8080/notes", newNote);
-        //addBookMessage.innerHTML = `<span style='color:green;'>Book added successfully!</span>`;
       } catch {
-        //addBookMessage.innerHTML = `<span style='color:red;'>Something went wrong. Try Again.</span>`;
       }
+      window.location.reload();
     }
-      
+
+    const handleDelete = (content) => {
+      axios.delete("http://localhost:8080/notes/"+content)
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => console.log(err));
+    }
+     
 
     return (
       <div>
@@ -54,6 +69,37 @@ export default function NoteScreen() {
             auth ?
             <div>
                 <h3>{name}, here are your notes: </h3>
+                <div className="flex-c-row for-sticky-notes container">
+          <div className="flex-c-col">
+            <div className="notes">
+              
+              <textarea placeholder="Write Here..." id="userInput"></textarea>
+              <button onClick={addNote}>Add Note</button>
+            </div>
+          </div> 
+          <table>
+              <thead>
+                <tr>
+                  <th>Note Content</th>
+                  <th>Time Created</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody style={{}}>
+                {
+                  data.map((notes, index) => (
+                    <tr key={index}>
+                      <td>{notes.content}</td>
+                      <td>{notes.created}</td>
+                      <td>
+                        <button onClick={() => handleDelete(notes.content)}>delete</button>
+                      </td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+        </div>
             </div>
             :
             <div>
@@ -63,17 +109,7 @@ export default function NoteScreen() {
             </div>
           }
         </div>
-        <div className="flex-c-row for-sticky-notes">
-          <div className="flex-c-col">
-            <div className="notes">
-              
-              <textarea placeholder="Write Here..." id="userInput"></textarea>
-              <button onClick={addNote}>Add Note</button>
-            </div>
-            <button>Update</button>  
-            
-          </div> 
-        </div>
+        
         <div>
           
         </div>

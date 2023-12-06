@@ -26,7 +26,7 @@ export default function Login() {
             axios.post("http://localhost:8080/login", values)
             .then(res => {
                 if(res.data.Status === "Success"){
-                    navigate('/home');
+                    navigate('/profile');
                 } else {
                     alert(res.data.Error);
                 }

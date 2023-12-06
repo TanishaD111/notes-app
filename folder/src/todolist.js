@@ -1,9 +1,35 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Navigation from './navigation.js'
-
+import {Link} from 'react-router-dom'
 
 export default function ToDoListScreen() {
+
+    const [auth,setAuth] = useState(false);
+    const [message, setMessage] = useState('')
+    const [name, setName] = useState('')
+    axios.defaults.withCredentials = true;
+    useEffect(() => {
+        axios.get('http://localhost:8080/home')
+        .then(res => {
+            if(res.data.Status === "Success"){
+                setAuth(true)
+                setName(res.data.name)
+            } else{
+                setAuth(false)
+                setMessage(res.data.Error)
+            }
+        })
+        .then(err => console.log(err));
+    }, [])
+
+    const [data, setData] = useState([])
+    useEffect(() => {
+        axios.get(`http://localhost:8080/todolist?name=${name}`)
+        .then(res => setData(res.data))
+        .catch(err => console.log(err));
+    }, [name])
+
 
     const inputBox = document.getElementById("input-box");
     const listContainer = document.getElementById("list-container");
@@ -26,7 +52,7 @@ export default function ToDoListScreen() {
             console.error("Error removing task:", error);
             //addBookMessage.innerHTML = `<span style='color:red;'>Something went wrong. Try Again.</span>`;
             }
-            window.location.reload();
+            //window.location.reload();
 
             try {
             await axios.get("http://localhost:8080/todolist");
@@ -48,7 +74,7 @@ export default function ToDoListScreen() {
             const cont = inputBox.value;
             const newTodo = {
                 description: cont,
-                done: false,
+                name: name,
             };
 
             try {
@@ -88,7 +114,12 @@ export default function ToDoListScreen() {
     return (
         <div>
             <Navigation />
-            <div className="flex-c-row for-todo-list justify-content-center">
+            <div>
+                {
+                    auth ?
+                    <div>
+                        <h3>{name}, here is your to do list: </h3>
+                        <div className="flex-c-row for-todo-list justify-content-center">
                 <div className="flex-c-col">
                     <div className="todo-app">
                         <h2>To-Do List</h2>
@@ -108,6 +139,35 @@ export default function ToDoListScreen() {
                 
                     
             </div> 
+            <p>Past List Items</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>List Item</th>
+                  <th>Time Created</th>
+                </tr>
+              </thead>
+              <tbody style={{}}>
+                {
+                  data.map((todolist, index) => (
+                    <tr key={index}>
+                      <td>{todolist.description}</td>
+                      <td>{todolist.created}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+                    </div>
+                    :
+                    <div>
+                        <h3>{message}</h3>
+                        <h3>Login Now</h3>
+                        <Link to="/login" className='btn btn-primary' >Login</Link>
+                    </div>
+                }
+            </div>
+            
         </div>
     )
 }

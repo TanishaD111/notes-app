@@ -5,7 +5,7 @@ const app = express();
 import cors from 'cors'
 app.use(cors({
   origin: ["http://localhost:3000"],
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET", "DELETE"],
   credentials: true
 }));
 app.use(express.json());
@@ -66,9 +66,71 @@ app.get("/users", (req, res) => {
   });
 });
 
-app.get("/notes", async (req, res) => {
+app.get("/notes", (req, res) => {
   const sql = "SELECT * FROM notes WHERE `name` = ?";
-  db.query(sql, (err, results) => {
+  const values = [
+    req.query.name,
+  ];
+
+  db.query(sql, [values], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.get("/todolist", (req, res) => {
+  const sql = "SELECT * FROM todolist WHERE `name` = ?";
+  const values = [
+    req.query.name,
+  ];
+
+  db.query(sql, [values], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.get("/calender", (req, res) => {
+  const sql = "SELECT * FROM calender WHERE `name` = ?";
+  const values = [
+    req.query.name,
+  ];
+
+  db.query(sql, [values], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+/*
+app.put("/notes33", (req, res) => {
+  const sql = "UPDATE notes SET `content` = ? WHERE id = ?";
+  const values = [
+    req.body.content,
+    req.body.id,
+  ];
+
+  db.query(sql, [values], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});*/
+
+app.delete("/notes/:content", (req, res) => {
+  const sql = "DELETE FROM notes WHERE `content` = ?";
+  const cont = req.params.content;
+  
+  db.query(sql, [cont], (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
+app.delete("/calender/:title", (req, res) => {
+  const sql = "DELETE FROM calender WHERE `title` = ?";
+  const cont = req.params.title;
+  
+  db.query(sql, [cont], (err, results) => {
     if (err) throw err;
     res.json(results);
   });
@@ -250,11 +312,11 @@ app.get("/todolist", async (req, res) => {
 
 app.post("/todolist", (req, res) => {
   const sql =
-    "INSERT INTO todolist (`description`, `done`) VALUES (?)";
+    "INSERT INTO todolist (`description`, `name`) VALUES (?)";
 
   const values = [
     req.body.description,
-    req.body.done,
+    req.body.name,
   ];
 
   db.query(sql, [values], (err, result) => {
@@ -287,6 +349,27 @@ app.post("/todolist/remove", (req, res) => {
   });
 });
 
+app.post("/calender", (req, res) => {
+  const sql =
+    "INSERT INTO calender (`title`, `start`, `end`, `name`) VALUES (?)";
+
+  const values = [
+    req.body.title,
+    req.body.start,
+    req.body.end,
+    req.body.name,
+  ];
+
+  db.query(sql, [values], (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send("Error inserting note into database");
+    } else {
+      console.log("note added to database:", result);
+      res.status(200).send("note added to database");
+    }
+  });
+});
 
 
   

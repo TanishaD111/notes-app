@@ -3,7 +3,7 @@ import NotesScreen from './notes.js'
 import ToDoListScreen from './todolist.js'
 import Login from './login.js'
 import Signup from './signup.js'
-import Home from './home.js'
+//import Home from './home.js'
 import Welcome from './welcome.js'
 import Profile from './profile.js'
 import Calender from './calender.js'
@@ -16,7 +16,6 @@ function App(){
       <Route path='/' element={<Welcome />}></Route>
       <Route path='/login' element={<Login />}></Route>
       <Route path='/signup' element={<Signup />}></Route>
-      <Route path="/home" element={<Home />}></Route>
       <Route path="/notes" element={<NotesScreen />}></Route>
       <Route path="/todolist" element={<ToDoListScreen />}></Route>
       <Route path="/profile" element={<Profile />}></Route>
