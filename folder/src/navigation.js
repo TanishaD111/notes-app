@@ -17,7 +17,7 @@ class Navigation extends React.Component {
               <a className="nav-link" href="todolist">To Do List</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="calender">Calender</a>
+              <a className="nav-link" href="calender">Calendar</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="profile">Profile</a>

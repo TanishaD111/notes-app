@@ -27,6 +27,15 @@ export default function ToDoListScreen() {
             //addBookMessage.innerHTML = `<span style='color:red;'>Something went wrong. Try Again.</span>`;
             }
             window.location.reload();
+
+            try {
+            await axios.get("http://localhost:8080/todolist");
+            //addBookMessage.innerHTML = `<span style='color:green;'>note added successfully!</span>`;
+            
+        } catch (error) {
+            console.error("Error removing task:", error);
+            //addBookMessage.innerHTML = `<span style='color:red;'>Something went wrong. Try Again.</span>`;
+            }
         }
     }
     

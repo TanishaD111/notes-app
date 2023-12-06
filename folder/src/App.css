@@ -20,6 +20,11 @@
 font-family: 'Nunito', sans-serif;
 font-family: 'Oxygen', sans-serif;
 font-family: 'Poppins', sans-serif;
+
+}
+
+body {
+  background: linear-gradient(90deg, #4040FF, rgb(115, 100, 255));
 }
 
 /* .bg-image{
@@ -53,7 +58,7 @@ ul.nav {
 }
 
 a.nav-link {
-	color:rgb(115, 100, 255);
+	color: white;
 	font-weight: normal;
 	
 }
@@ -68,8 +73,8 @@ a.nav-link.nav-link-alternate {
 ul.nav a:hover {
 	cursor: pointer;
 	text-decoration: underline;
-	text-decoration-color: #4040FF;
-	color: #4040FF !important;
+	text-decoration-color: white;
+	color: white !important;
 	/*-webkit-text-fill-color: rgb(154, 124, 245); */
 	text-underline-offset: 50%;
 	text-decoration-thickness: 20%;
@@ -81,7 +86,7 @@ ul.nav a.nav-link-alternate:hover {
 }
 
 ul.nav a:visited {
-	color: rgb(115, 100, 255);
+	color: white;
 }
 
 ul.nav a.nav-link-alternate:visited {
@@ -120,6 +125,19 @@ ul.nav a.nav-link-alternate:visited {
 	display: block;
 	margin: auto;
 }*/
+
+.sticky-note {
+  width: 200px;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.sticky-note-content {
+  margin: 0;
+}
 
 #accountIcon{
 	color: rgb(115, 100, 255);
@@ -161,8 +179,8 @@ ul.nav a.nav-link-alternate:visited {
 .welcome-page-container
 {
 	position: relative;
-	top: 30%;
-	background: linear-gradient(180deg, #4040FF, rgb(115, 100, 255));
+	margin-top: 25%;
+
 }
 
 .welcome-page-container h1 {
@@ -223,8 +241,9 @@ div.container.sign-up-form {
 	padding: 40px 40px 40px;
 	border-radius: 20px;
 	
-	margin-top: 2%;
+	margin-top: 7%;
 	background: linear-gradient(180deg, #4040FF, rgb(115, 100, 255));
+  border: 10px solid white;
 	
 }
 
@@ -272,8 +291,10 @@ div.container.login-form {
 	padding: 40px 40px 40px;
 	border-radius: 20px;
 	
-	margin-top: 5%;
+	margin-top: 10%;
 	background: linear-gradient(180deg, #4040FF, rgb(115, 100, 255));
+  border: 10px solid white;
+  
 	
 }
 
@@ -313,6 +334,7 @@ button.btn.w-100.btn-lg.login-button:hover {
 	background: transparent;
 	display: flex;
 	padding: 0;
+  background-color: white;
 	/* border-color: #4040FF !important; */
 	
 	
@@ -358,7 +380,7 @@ button.btn.w-100.btn-lg.login-button:hover {
 
 
 .right-side i.bi.bi-file-person {
-	margin-top: 40%;
+	margin-top: 60%;
 	font-size: 70px; /* increasing size of icon */
 	margin-bottom: 30px;
 }
@@ -375,7 +397,7 @@ button.btn.w-100.btn-lg.login-button:hover {
 .right-side .logout-button {
 	display: flex;
 	font-size: 25px;
-	border-width: 3px;
+	border-width: 10px;
 	border-color: white;
 	color: white;
 	background-color: transparent;
@@ -402,21 +424,21 @@ button.btn.w-100.btn-lg.login-button:hover {
 }
 
 .left-side h2.information-title {
-	padding-bottom: 10px;
+	padding-bottom: 35px;
 	background-clip: padding-box;
 	box-shadow: 0 5px 0 0 rgb(115, 100, 255);
 
 }
 
 .email-title  {
-	margin-top: 4%;
-	margin-bottom: 3%;
+	margin-top: 9%;
+	margin-bottom: 7%;
 	line-height: 2em;
 }
 
 .user-email {
 	font-size: 1.5em;
-	padding-bottom: 4%;
+	padding-bottom: 12%;
 	background-clip: padding-box;
 	box-shadow: 0 5px 0 0 rgb(115, 100, 255);
 }
@@ -829,106 +851,163 @@ input:checked + span {
 /* ----- Sticky Notes Page -------- */
 
 .flex-c-row.for-sticky-notes {
- 	position: relative;
- 	width: 100%;
- 	height: 100vh;
- 	display: flex;
- 	justify-content: flex-start;
- 	align-items: flex-start;
- 	flex-wrap: wrap;
- 	gap: 50px;
- 	padding: 50px;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 50px;
 }
 
 .flex-c-row.for-sticky-notes .notes {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 50px;
-	justify-content: flex-start;
-	align-items: flex-start;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 50px;
+ justify-content: flex-start;
+ align-items: flex-start;
 }
 
 
-.flex-c-row.for-sticky-notes .notes  .note{
-	position: relative;
-	width: 300px;
-	height: 300px;
-	background-color: white;
-	box-shadow: 0 15px 35px black;
-	color: black;
-	font-size: 20px;
-	overflow: auto;
-	/* white-space: nowrap; */
-	word-break: break-all; /* makes sure text goes to next line */
-	
-	
+.flex-c-row.for-sticky-notes .notes .note{
+ position: relative;
+ width: 300px;
+ height: 300px;
+ background-color: white;
+ box-shadow: 0 15px 35px black;
+ color: black;
+ font-size: 20px;
+ overflow: auto;
+ /* white-space: nowrap; */
+ /* word-break: break-all; makes sure text goes to next line */
+ /* word-break: break-word; */
+ 
+ /* makes after enter, text goes to next line & makes sure after continuous text reaches next line, it'll go to next line */
+ word-wrap: break-word;
+ white-space: pre-wrap; 
+ margin-bottom: 20px;
+ 
+ 
+}
+
+.flex-c-row.for-sticky-notes .notes {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 50px;
+ justify-content: flex-start;
+ align-items: flex-start;
 }
 
 .details h3{
-	font-size: 1em;
-	padding: 20px;
-	line-height: 1.5em; /* controls spacing between each line of text */
-	/* user-select: none; */
-	
+ font-size: 1em;
+ padding: 20px;
+ line-height: 1.5em; /* controls spacing between each line of text */
+ /* user-select: none; */
+ 
 }
 
+
+/* 
 .flex-c-row.for-sticky-notes .notes  .note::before{
-	content: 'Double Click to Remove This Note';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	background: rgb(115, 100, 255);
-	color: white;
-	
-	padding: 3px 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 0.85em;
-	opacity: 0;
-	transition: 0.5s;
-	
+ content: 'Double Click to Remove This Note';
+ position: absolute;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ background: rgb(115, 100, 255);
+ color: white;
+ 
+ padding: 3px 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-size: 0.85em;
+ opacity: 0;
+ transition: 0.5s;
+ 
 }
 .flex-c-row.for-sticky-notes .notes  .note:hover::before{
-	opacity: 1;
-}
+ opacity: 1;
+} */
 
 #create {
-	position: relative;
-	width: 300px;
-	height: 300px;
-	background-color: white;
-	display: flex;
-	line-height: 80px;
-	align-items: center;
-	font-size: 5em;
-	cursor: pointer;
+ position: relative;
+ width: 300px;
+ height: 300px;
+ background-color: white;
+ display: flex;
+ line-height: 80px;
+ align-items: center;
+ font-size: 5em;
+ cursor: pointer;
 }
 
 #create i {
-	position: absolute;
-	color: rgb(115, 100, 255);
+ position: absolute;
+ color: rgb(115, 100, 255);
 }
 
 .createBox {
-	position: relative;
-	width: 300px;
-	height: 300px;
-	z-index: 1000;
-	display: none;
+ position: relative;
+ width: 300px;
+ height: 300px;
+ z-index: 1000;
+ display: none;
+}
+
+.innerCreateBox {
+ display: inline;
 }
 
 .createBox textarea {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 300px;
-	height: 300px;
-	font-size: 20px;
-	padding: 20px;
-	resize: none;
-	line-height: 1.5em;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 300px;
+ height: 200px;
+ font-size: 20px;
+ padding: 20px;
+ resize: none;
+ line-height: 1.5em;
+ position: absolute;
+ outline: none;
+ border: none;
+}
+
+
+
+.createNoteButton {
+ position: relative;
+ margin-top: 220px;
+ font-size: 20px;
+ color: rgb(115, 100, 255);
+ width: 100%;
+ background-color: white;
+ border: none;
+}
+
+.createNoteButton:hover {
+ color: white;
+ background-color: rgb(115, 100, 255);
+ border: none;
+}
+
+.deleteButton {
+ position: relative;
+ font-size: 20px;
+ color: rgb(115, 100, 255);
+ width: 100%;
+ background-color: white;
+ border: none;
+ height: 50px;
+}
+
+.deleteButton:hover {
+ color: white;
+ background-color: rgb(115, 100, 255);
+ border: none;
 }
 
 

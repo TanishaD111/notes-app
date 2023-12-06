@@ -66,6 +66,14 @@ app.get("/users", (req, res) => {
   });
 });
 
+app.get("/notes", async (req, res) => {
+  const sql = "SELECT * FROM notes WHERE `name` = ?";
+  db.query(sql, (err, results) => {
+    if (err) throw err;
+    res.json(results);
+  });
+});
+
 const verifyUser = (req, res, next) => {
   const token = req.cookies.token;
   if(!token){
@@ -76,6 +84,22 @@ const verifyUser = (req, res, next) => {
         return res.json({Error: "Token is not correct"});
       } else {
         req.name = decoded.name;
+        next();
+      }
+    })
+  }
+}
+
+const verifyUser2 = (req, res, next) => {
+  const token = req.cookies.token;
+  if(!token){
+    return res.json({Error: "You are not authenticated"});
+  } else{
+    jwt.verify(token, "jwt-secret-key", (err, decoded) => {
+      if(err) {
+        return res.json({Error: "Token is not correct"});
+      } else {
+        req.id = decoded.id;
         next();
       }
     })
@@ -164,6 +188,25 @@ app.get('/home', verifyUser, (req, res) => {
   return res.json({Status: "Success", name: req.name});
 })
 
+app.post("/notes2", (req, res) => {
+  const sql =
+    'SELECT * FROM users WHERE `name` = ?';
+
+  const values = [
+    req.body.name,
+  ];
+
+  db.query(sql, [values], (err, result) => {
+    if (err) {
+      return res.json({Status: "Error"})
+    }else{
+      const userId = result[0].id;
+    console.log('User ID:', userId);
+      return res.json({Status: "Success"})
+    }
+  })
+});
+
 app.get('/logout', (req, res) => {
   res.clearCookie('token')
   return res.json({Status: "Success"});
@@ -179,11 +222,11 @@ app.get("/notes", async (req, res) => {
 
 app.post("/notes", (req, res) => {
   const sql =
-    "INSERT INTO notes (`content`, `user_id`) VALUES (?)";
+    "INSERT INTO notes (`content`, `name`) VALUES (?)";
 
   const values = [
     req.body.content,
-    req.body.user_id,
+    req.body.name,
   ];
 
   db.query(sql, [values], (err, result) => {

@@ -18,7 +18,7 @@ export default function Validation(values){
     }
 
     if(values.password ===""){
-        error.password = "Email should not be empty"
+        error.password = "Password should not be empty"
     } /*else if(!password_pattern.test(values.password)){
         error.password = "Email did not match"
     } */else{

@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 //import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 //import axios from 'axios';
 import Navigation from './navigation.js'
-import {Link, useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios';
 
 export default function Home() {
@@ -11,7 +11,6 @@ export default function Home() {
     const [auth,setAuth] = useState(false);
     const [message, setMessage] = useState('')
     const [name, setName] = useState('')
-    const navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
