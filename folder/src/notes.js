@@ -68,7 +68,7 @@ export default function NoteScreen() {
           {
             auth ?
             <div>
-                <h3>{name}, here are your notes: </h3>
+                <h3 class="notesMessage">{name}, here are your notes: </h3>
                 <div className="flex-c-row for-sticky-notes container">
           <div className="flex-c-col">
             <div className="notes">
@@ -103,9 +103,9 @@ export default function NoteScreen() {
             </div>
             :
             <div>
-                <h3>{message}</h3>
-                <h3>Login Now</h3>
-                <Link to="/login" className='btn btn-primary' >Login</Link>
+                <h3 className="LogoutMessage">{message}</h3>
+                <h3 className="LogoutMessage"> Login Now</h3>
+                <Link to="/login" className='btn btn-primary login' >Login</Link>
             </div>
           }
         </div>

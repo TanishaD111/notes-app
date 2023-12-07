@@ -144,9 +144,9 @@ export default function Calender() {
                     </div>
                     :
                     <div>
-                        <h3>{message}</h3>
-                        <h3>Login Now</h3>
-                        <Link to="/login" className='btn btn-primary' >Login</Link>
+                        <h3 className="LogoutMessage">{message}</h3>
+                        <h3 className="LogoutMessage">Login Now</h3>
+                        <Link to="/login" className='btn btn-primary login' >Login</Link>
                     </div>
                 }
             </div>

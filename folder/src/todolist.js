@@ -118,7 +118,7 @@ export default function ToDoListScreen() {
                 {
                     auth ?
                     <div>
-                        <h3>{name}, here is your to do list: </h3>
+                        <h3 class="notesMessage">{name}, here is your to do list: </h3>
                         <div className="flex-c-row for-todo-list justify-content-center">
                 <div className="flex-c-col">
                     <div className="todo-app">
@@ -139,7 +139,7 @@ export default function ToDoListScreen() {
                 
                     
             </div> 
-            <p>Past List Items</p>
+            <p className="LogoutMessage">Past List Items</p>
             <table>
               <thead>
                 <tr>
@@ -161,9 +161,9 @@ export default function ToDoListScreen() {
                     </div>
                     :
                     <div>
-                        <h3>{message}</h3>
-                        <h3>Login Now</h3>
-                        <Link to="/login" className='btn btn-primary' >Login</Link>
+                        <h3 className="LogoutMessage">{message}</h3>
+                        <h3 className="LogoutMessage"> Login Now</h3>
+                        <Link to="/login" className='btn btn-primary login' >Login</Link>
                     </div>
                 }
             </div>

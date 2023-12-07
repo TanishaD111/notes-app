@@ -161,7 +161,7 @@ const verifyUser2 = (req, res, next) => {
       if(err) {
         return res.json({Error: "Token is not correct"});
       } else {
-        req.id = decoded.id;
+        req.email = decoded.email;
         next();
       }
     })
@@ -248,6 +248,10 @@ app.post("/login", (req, res) => {
 
 app.get('/home', verifyUser, (req, res) => {
   return res.json({Status: "Success", name: req.name});
+})
+
+app.get('/home2', verifyUser2, (req, res) => {
+  return res.json({Status: "Success", email: req.email});
 })
 
 app.post("/notes2", (req, res) => {

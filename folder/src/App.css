@@ -49,6 +49,29 @@ body {
 	background: linear-gradient(135deg, #153667, #4e085f);
 } */
 
+.LogoutMessage {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.btn.btn-primary.login {
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  margin-left: 45vw;
+  color: rgb(115, 100, 255);
+  background-color: white;
+  border: none;
+}
+
+.btn.btn-primary.login:hover {
+  background-color: #8762ed;
+  color: white;
+  border-color: white;
+  border: 3px solid;
+}
+
 ul.nav {
 	display: flex;
 	padding: 2% 3%;
@@ -132,7 +155,7 @@ ul.nav a.nav-link-alternate:visited {
 }
 
 table{
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
   border-collapse: collapse;
   width: 80%;
   text-align: center;
@@ -140,7 +163,7 @@ table{
 }
 
 table tr {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(255, 255, 255);
   background-color: rgb(56, 20, 147);
   color: white;
 }
@@ -148,6 +171,13 @@ table tr {
 table tr th, table tr td {
   padding: 5px;
   color: white;
+}
+
+.notesMessage {
+  color: white;
+  display: flex;
+  justify-content: center;
+
 }
 
 .sticky-note {
@@ -353,7 +383,7 @@ button.btn.w-100.btn-lg.login-button:hover {
 
 .flex-c-col .container.account-page-container {
 
-	width: 100vw;
+	width: 25vw;
 	height: 75vh;
 	background: transparent;
 	display: flex;
@@ -367,7 +397,7 @@ button.btn.w-100.btn-lg.login-button:hover {
 
 
 .flex-c-col .container.account-page-container .right-side {
-	width: 25%;
+	width: 100%;
 	height: 100%;
 	background: linear-gradient(180deg, #4040FF, rgb(115, 100, 255));
 	
@@ -922,6 +952,10 @@ input:checked + span {
  gap: 50px;
  justify-content: flex-start;
  align-items: flex-start;
+}
+
+.flex-c-col .notes {
+  justify-content: center;
 }
 
 .details h3{

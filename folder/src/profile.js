@@ -9,6 +9,7 @@ export default function Profile() {
     const [auth,setAuth] = useState(false);
     const [message, setMessage] = useState('')
     const [name, setName] = useState('')
+    //const [email, setEmail] = useState('')
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
@@ -24,6 +25,19 @@ export default function Profile() {
         })
         .then(err => console.log(err));
     }, [])
+
+    /*
+    useEffect(() => {
+        axios.get('http://localhost:8080/home2')
+        .then(res => {
+            if(res.data.Status === "Success"){
+                setEmail(res.data.email)
+            } else{
+                setMessage(res.data.Error)
+            }
+        })
+        .then(err => console.log(err));
+    }, [])*/
 
     const handleDelete = () => {
         axios.get('http://localhost:8080/logout')
@@ -47,11 +61,6 @@ export default function Profile() {
                                         <h2 className="name-account">Hello {name} </h2>
                                         <button className='btn btn-default border w-50 logout-button btn' onClick={handleDelete}>Logout</button>
                                     </div>
-                                    <div className="left-side">
-                                        <h2 className="information-title">Information</h2>
-                                        <h2 className="email-title">Email</h2>
-                                        <h2 className="user-email">myEmail</h2>
-                                    </div>
                                 </div>
                             </div>
                         
@@ -59,9 +68,9 @@ export default function Profile() {
                     </div>
                     :
                     <div>
-                        <h3>{message}</h3>
-                        <h3>Login Now</h3>
-                        <Link to="/login" className='btn btn-primary' >Login</Link>
+                        <h3 className="LogoutMessage">{message}</h3>
+                        <h3 className="LogoutMessage">Login Now</h3>
+                        <Link to="/login" className='btn btn-primary login' >Login</Link>
                     </div>
                 }
             </div>
