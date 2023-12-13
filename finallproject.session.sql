@@ -1,26 +1,37 @@
+
 DROP TABLE notes;
 DROP TABLE todolist;
+DROP TABLE calender;
+DROP TABLE users;
+
+
+CREATE TABLE users (
+    name VARCHAR(255) NOT NULL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE notes (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,
     content TEXT NOT NULL,
-    created TIMESTAMP NOT NULL DEFAULT NOW()
+    created TIMESTAMP NOT NULL DEFAULT NOW(),
+    name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (name) REFERENCES users(name)
 );
-
-INSERT INTO notes (title, content)
-VALUES 
-    ('First note', 'This project suckssss'),
-    ('Second note', 'This project still sucks ughhh');
 
 CREATE TABLE todolist (
     id INT PRIMARY KEY AUTO_INCREMENT,
     description VARCHAR(255) NOT NULL,
-    done BOOLEAN NOT NULL,
-    created TIMESTAMP NOT NULL DEFAULT NOW()
+    created TIMESTAMP NOT NULL DEFAULT NOW(),
+    name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (name) REFERENCES users(name)
 );
 
-INSERT INTO todolist (description, done)
-VALUES 
-    ('Number 1', false),
-    ('Number 2', false);
+CREATE TABLE calender (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    start VARCHAR(255) NOT NULL,
+    end VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    FOREIGN KEY (name) REFERENCES users(name)
+)
